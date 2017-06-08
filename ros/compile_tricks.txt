@@ -1,0 +1,16 @@
+1. Be careful about the PCL lib version
+since in my computer, there are two versions, i.e., PCL 1.7.1 (/usr/lib/ and /usr/include/)
+and PCL 1.8.0, (/usr/local/include/pcl-1.8), we need to specify the pcl version in cmake
+especially in, 
+Autoware/ros/src/computing/perception/localization/packages/ndt_localizer
+Autoware/ros/src/computing/perception/detection/packages/lidar_tracker (find package is missing)
+
+if not specified (find_package PCL REQUIRED) or specified like (find_package PCL 1.7/1.8 REQUIRED), it will automatically find the highest version, i.e., PCL1.8
+
+however, in ndt_localizer fast pcl, it needs PCL version less than PCL1.8. So we should explicitly compile that package against PCL1.7. I use find_package(PCL 1.7.1 EXACT REQUIRED). And finally it works.
+
+Now...
+
+there is only PCL 1.7
+pls. check /opt/ros/indigo/share/ since there are cmake configs hard coding /usr/lib/lipcl..and /usr/include which are already reinstalled to /usr/local/lib and /usr/local/include
+

@@ -18,7 +18,8 @@ find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   cv_tracker_msgs
 )
-
+find_package(PCL REQUIRED) ####modified by denny
+MESSAGE(STATUS "PCL VERSION: " ${PCL_VERSION})
 pkg_check_modules(Qt5Core REQUIRED Qt5Core)
 pkg_check_modules(Qt5Widgets REQUIRED Qt5Widgets)
 

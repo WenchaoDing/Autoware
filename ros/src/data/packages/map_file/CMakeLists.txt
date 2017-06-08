@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   waypoint_follower_msgs
   vector_map
 )
+find_package(PCL REQUIRED)
 pkg_check_modules(PCL_IO REQUIRED pcl_io-1.7)
 pkg_check_modules(EIGEN3 REQUIRED eigen3)
 
